@@ -1,33 +1,60 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-int main ()
+
+#define MAX 50
+
+int main()
 {
-  int arr[10];
-	int m;
-	int i; 
-	int max; 
-	int min;
-    cout << "Enter the size of the array : "; //number of elements
-    
-    cin >> m;
-    cout << "Enter the elements of the array : "; // the elements values
-    
-    for (i = 0; i < m; i++)
-    	cin >> arr[i];
-    max = arr[0];
-    
-    for (i = 0; i < m; i++)
-    {
-        if (max < arr[i])
-            max = arr[i];
-    }
-    min = arr[0];
-    for (i = 0; i < m; i++)
-    {
-        if (min > arr[i])
-            min = arr[i];
-    }
-    cout << "Maximum  element : " << max;
-    cout << " Minnimum  element : " << min;
-    return 0;
+	//array declaration
+	int arr[MAX];
+	int n,i,j;
+	int temp;
+
+	//read total number of elements to read
+	cout<<"Enter total number of elements to read: ";
+	cin>>n;
+
+	//check bound
+	if(n<0 || n>MAX)
+	{
+		cout<<"Input valid range!!!"<<endl;
+		return -1;
+	}
+
+	//read n elements
+	for(i=0;i<n;i++)
+	{
+		cout<<"Enter element ["<<i+1<<"] ";
+		cin>>arr[i];
+	}
+
+	//print input elements
+	cout<<"Unsorted Array elements:"<<endl;
+	for(i=0;i<n;i++)
+		cout<<arr[i]<<"\t";
+	cout<<endl;
+
+	//sorting - ASCENDING ORDER
+	for(i=0;i<n;i++)
+	{
+		for(j=i+1;j<n;j++)
+		{
+			if(arr[i]>arr[j])
+			{
+				temp  =arr[i];
+				arr[i]=arr[j];
+				arr[j]=temp;
+			}
+		}
+	}
+
+	//print sorted array elements
+	cout<<"Sorted (Ascending Order) Array elements:"<<endl;
+	for(i=0;i<n;i++)
+		cout<<arr[i]<<"\t";
+	cout<<endl;
+
+
+	return 0;
+
 }
